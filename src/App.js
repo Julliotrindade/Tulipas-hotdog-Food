@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function PedidoHotdog() {
   const [produtos, setProdutos] = useState([
     {
-      nome: "Hotdog Simples",
+      nome: "Hotdog tradicional",
       preco: 8,
       qtd: 0,
       max: 10,
@@ -15,7 +15,7 @@ export default function PedidoHotdog() {
 
     
    {
-      nome: "Hotdog Duplo",
+      nome: "Hotdog frango",
       preco: 15,
       qtd: 0,
       max: 10,
@@ -27,7 +27,7 @@ export default function PedidoHotdog() {
 
     
     {
-      nome: "Hotdog Duplo",
+      nome: "Hotdog carne",
       preco: 15,
       qtd: 0,
       max: 10,
