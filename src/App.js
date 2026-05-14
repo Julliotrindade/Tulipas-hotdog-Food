@@ -328,12 +328,6 @@ export default function PedidoHotdog() {
       >
         {tipo}
       </div>
-    ))}
-
-  </div>
-</div>
-``
-
 
         {/* ENDEREÇO */}
         <div style={{
