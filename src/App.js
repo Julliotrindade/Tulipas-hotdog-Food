@@ -20,12 +20,53 @@ export default function PedidoHotdog() {
       preco: 7,
       qtd: 0,
       max: 10,
-      img: "https://revistaoeste.com/oestegeral/wp-content/uploads/2026/02/Imagem-3-11.jpg",
+      img: "https://img.cdndsgni.com/preview/10531382.jpg",
       adicionais: ["Maionese", "Ketchup"],
+      selecionados: [],
+      obs: ""
+    },
+    {
+      nome: "Hotdog Carne de sol na nata",
+      preco: 8,
+      qtd: 0,
+      max: 10,
+      img: "https://osertanejorh.wordpress.com/wp-content/uploads/2014/09/mangaio-23-carne-com-nata.jpg",
+      adicionais: ["Maionese", "Ketchup"],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Hotdog Franbacon",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "https://i0.wp.com/espetinhodesucesso.com/wp-content/uploads/2024/08/Como-fritar-bacon-em-cubos-na-Airfryer.jpg?resize=800%2C450&ssl=1",
+      adicionais: ["Maionese", "Ketchup"],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Hotdog Americano",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "https://www.extrabom.com.br/media/produtos/350x350/45042_20170420104415_thumb_45042_linguica_calabresa_cozida_fina_cofril.jpg_.webp",
+      adicionais: ["Maionese", "Ketchup"],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Refrigerante 1L",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "/images/Refris.jpg",
+      adicionais: ["Pepis", "Guaraná", "Coca ZERO"],
       selecionados: [],
       obs: ""
     }
   ]);
+
 
   const [endereco, setEndereco] = useState("");
   const [pagamento, setPagamento] = useState("");
