@@ -19,7 +19,7 @@ export default function PedidoHotdog() {
       preco: 8,
       qtd: 0,
       max: 10,
-      img: "https://www.instagram.com/p/DR5ugveDPVd/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      img: "/public/images/Refri.jpg",
       adicionais: ["Maionese", "Ketchup"],
       selecionados: [],
       obs: ""
