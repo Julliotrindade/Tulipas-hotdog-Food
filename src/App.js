@@ -58,6 +58,14 @@ export default function PedidoHotdog() {
       obs: ""
     },
     
+    {
+      nome: "Qual forma de pagamento?",
+      adicionais: ["Pix", "Cartão", "Espécie"],
+      selecionados: [],
+      obs: "Endereço"
+    },
+    
+    
   ]);
 
   const numeroWhatsApp = "5584996564129";
