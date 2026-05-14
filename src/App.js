@@ -6,7 +6,7 @@ export default function PedidoHotdog() {
   const [produtos, setProdutos] = useState([
     {
       nome: "Hotdog Tradicional",
-      preco: 7,
+      preco: 18,
       qtd: 0,
       max: 10,
       img: "https://img.cdndsgni.com/preview/10531382.jpg",
