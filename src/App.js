@@ -3,40 +3,60 @@ import { useState } from "react";
 export default function PedidoHotdog() {
   const [produtos, setProdutos] = useState([
     {
-      nome: "Hotdog tradicional",
+      nome: "Hotdog Tradicional",
+      preco: 7,
+      qtd: 0,
+      max: 10,
+      img: "https://i.imgur.com/5bXG3kF.png",
+      adicionais: ["Maionese", "Quetshup"],
+      selecionados: [],
+      obs: ""
+    },
+    
+    {
+      nome: "Hotdog Carne de sol na nata",
       preco: 8,
       qtd: 0,
       max: 10,
       img: "https://i.imgur.com/5bXG3kF.png",
-      adicionais: ["Bacon", "Queijo"],
+      adicionais: ["Maionese", "Quetshup"],
       selecionados: [],
       obs: ""
     },
-
     
    {
-      nome: "Hotdog frango",
-      preco: 15,
+      nome: "Hotdog Franbacon",
+      preco: 10,
       qtd: 0,
       max: 10,
       img: "https://i.imgur.com/5bXG3kF.png",
-      adicionais: ["Bacon", "Queijo", "Ovo"],
+      adicionais: ["Maionese", "Quetshup"],
       selecionados: [],
       obs: ""
     },
 
     
     {
-      nome: "Hotdog carne",
-      preco: 15,
+      nome: "Hotdog Americano",
+      preco: 10,
       qtd: 0,
       max: 10,
       img: "https://i.imgur.com/5bXG3kF.png",
       adicionais: ["Bacon", "Queijo", "Ovo"],
       selecionados: [],
       obs: ""
-    }
-
+    },
+    
+   {
+      nome: "Refri de 1 Litro",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "https://i.imgur.com/5bXG3kF.png",
+      adicionais: ["Pepsi", "Guaraná", "Coca Zero"],
+      selecionados: [],
+      obs: ""
+    },
     
   ]);
 
