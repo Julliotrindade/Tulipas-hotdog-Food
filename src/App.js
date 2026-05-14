@@ -84,7 +84,7 @@ export default function PedidoHotdog() {
       return;
     }
 
-    let msg = "📋 Resumo do Pedido - Tulipa's Hotdog\n\n";
+    let msg = "\uD83D\uDCDD Resumo do Pedido - Tulipa's Hotdog\n\n";
     msg += "🛒 Itens:\n\n";
 
     produtos.forEach(p => {
@@ -115,7 +115,7 @@ export default function PedidoHotdog() {
 
     msg += `💰💳🛒💵 Total: R$ ${calcularTotal().toFixed(2)}\n\n`;
     msg += `💳 Pagamento: ${pagamento}\n`;
-    msg += `🛵 Endereço: ${endereco}\n\n`;
+    msg += `\uD83D\uDEF5 Endereço: ${endereco}\n\n`;
     msg += "Confirma o pedido? ✅";
 
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(msg)}`;
