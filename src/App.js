@@ -19,7 +19,7 @@ export default function PedidoHotdog() {
       preco: 8,
       qtd: 0,
       max: 10,
-      img: "https://revistaoeste.com/oestegeral/wp-content/uploads/2026/02/Imagem-3-11.jpg",
+      img: "https://www.instagram.com/p/DR5ugveDPVd/",
       adicionais: ["Maionese", "Ketchup"],
       selecionados: [],
       obs: ""
