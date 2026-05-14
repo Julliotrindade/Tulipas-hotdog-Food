@@ -10,7 +10,7 @@ export default function PedidoHotdog() {
       qtd: 0,
       max: 10,
       img: "https://img.cdndsgni.com/preview/10531382.jpg",
-      adicionais: ["Maionese", "Ketchup"],
+      adicionais: [], // ["Maionese", "Ketchup"],cada item dentro é um quadrado de marcação
       selecionados: [],
       obs: ""
     },
