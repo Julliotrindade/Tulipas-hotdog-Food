@@ -349,7 +349,8 @@ export default function PedidoHotdog() {
               marginTop: 10,
               borderRadius: 8,
               border: "1px solid #ccc",
-              boxSizing: "border-box" // ✅ ESSENCIAL (corrige o vazamento)            
+              boxSizing: "border-box" // ✅ ESSENCIAL (corrige o vazamento) 
+            }}
           />
         </div>
 
