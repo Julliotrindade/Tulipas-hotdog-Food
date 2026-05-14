@@ -79,7 +79,7 @@ export default function PedidoHotdog() {
   };
 
   const enviar = () => {
-    let msg = "🍔 Pedido Hotdog\n\n";
+    let msg = "🍔 Pedido Tulipa's Hotdog\n\n";
 
     produtos.forEach(p => {
       if (p.qtd > 0) {
