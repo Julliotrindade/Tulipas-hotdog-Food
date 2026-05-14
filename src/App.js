@@ -2,17 +2,7 @@ import { useState } from "react";
 
 export default function PedidoHotdog() {
 
-  // ✅ 🎛️ CONTROLE DE TAMANHOS (MUDE SÓ AQUI)
-  const TAMANHO = {
-    larguraApp: 500, // 👉 largura do sistema
-    imagem: 120, // 👉 tamanho da imagem
-    titulo: 22, // 👉 nome do produto
-    preco: 18, // 👉 preço
-    botao: 40, // 👉 botões + e -
-    quantidade: 20, // 👉 número do item
-    paddingCard: 20 // 👉 espaçamento do card
-  };
-
+  // 👉 EDITAR PRODUTOS AQUI altera tudo no sistema
   const [produtos, setProdutos] = useState([
     {
       nome: "Hotdog Tradicional",
@@ -21,6 +11,46 @@ export default function PedidoHotdog() {
       max: 10,
       img: "https://revistaoeste.com/oestegeral/wp-content/uploads/2026/02/Imagem-3-11.jpg",
       adicionais: ["Maionese", "Ketchup"],
+      selecionados: [],
+      obs: ""
+    },
+    {
+      nome: "Hotdog Carne de sol na nata",
+      preco: 8,
+      qtd: 0,
+      max: 10,
+      img: "/images/Refris.jpg",
+      adicionais: ["Maionese", "Ketchup"],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Hotdog Franbacon",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "https://revistaoeste.com/oestegeral/wp-content/uploads/2026/02/Imagem-3-11.jpg",
+      adicionais: ["Maionese", "Ketchup"],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Hotdog Americano",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "https://revistaoeste.com/oestegeral/wp-content/uploads/2026/02/Imagem-3-11.jpg",
+      adicionais: ["Maionese", "Ketchup"],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Refrigerante 1L",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "/images/Refri.jpg",
+      adicionais: ["Pepis", "Guaraná", "Coca ZERO"],
       selecionados: [],
       obs: ""
     }
@@ -50,12 +80,12 @@ export default function PedidoHotdog() {
   const enviar = () => {
 
     if (!endereco || !pagamento) {
-      alert("Preencha endereço e pagamento!");
+      alert("Preencha endereço e forma de pagamento!");
       return;
     }
 
-    let msg = "\uD83D\uDCDD Resumo do Pedido\n\n";
-    msg += "\uD83D\uDED2 Itens:\n\n";
+    let msg = "\uD83D\uDCDD Resumo do Pedido - Tulipa's Hotdog\n\n";
+    msg += "🛒 Itens:\n\n";
 
     produtos.forEach(p => {
       if (p.qtd > 0) {
@@ -65,7 +95,7 @@ export default function PedidoHotdog() {
         msg += `${p.qtd}x ${p.nome} - R$ ${subtotal.toFixed(2)}\n`;
 
         if (p.selecionados.length || p.obs) {
-          let linhaExtra = "   \u2795 ";
+          let linhaExtra = "   ➕ ";
 
           if (p.selecionados.length) {
             linhaExtra += p.selecionados.join(", ");
@@ -79,14 +109,14 @@ export default function PedidoHotdog() {
           msg += linhaExtra + "\n";
         }
 
-        msg += "\n"; // 👉 espaço entre itens
+        msg += "\n";
       }
     });
 
-    msg += `\uD83D\uDCB0 Total: R$ ${calcularTotal().toFixed(2)}\n\n`;
-    msg += `\uD83D\uDCB3 Pagamento: ${pagamento}\n`;
+    msg += `💰💳🛒💵 Total: R$ ${calcularTotal().toFixed(2)}\n\n`;
+    msg += `💳 Pagamento: ${pagamento}\n`;
     msg += `\uD83D\uDEF5 Endereço: ${endereco}\n\n`;
-    msg += "Confirma o pedido? \u2705";
+    msg += "Confirma o pedido? ✅";
 
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank");
@@ -95,14 +125,14 @@ export default function PedidoHotdog() {
   return (
     <div style={{
       display: "flex",
-      justifyContent: "center",
+      justifyContent: "center", // 👉 centraliza tudo
       background: "#f4f4f4",
       minHeight: "100vh"
     }}>
 
       <div style={{
         width: "100%",
-        maxWidth: TAMANHO.larguraApp,
+        maxWidth: 500, // 👉 muda largura do sistema aqui
         padding: 20
       }}>
 
@@ -114,34 +144,43 @@ export default function PedidoHotdog() {
             style={{
               background: "white",
               borderRadius: 16,
-              padding: TAMANHO.paddingCard,
+              padding: 15,
               marginBottom: 15,
-              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)", // 👉 sombra
               transition: "0.3s"
             }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.02)"}
-            onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+            onMouseEnter={(e) =>
+              e.currentTarget.style.transform = "scale(1.03)"
+            }
+            onMouseLeave={(e) =>
+              e.currentTarget.style.transform = "scale(1)"
+            }
           >
 
-            {/* ✅ IMAGEM + TEXTO */}
+            {/* 👉 imagem + texto */}
             <div style={{
               display: "flex",
               alignItems: "center",
               gap: 15
             }}>
-              {p.img}
+              <img
+                src={p.img}
+                style={{
+                  width: 80, // 👉 MUDA TAMANHO DA IMAGEM AQUI
+                  height: 80,
+                  borderRadius: 10,
+                  objectFit: "cover"
+                }}
+              />
 
               <div>
-                <h3 style={{
-                  margin: 0,
-                  fontSize: TAMANHO.titulo
-                }}>
+                <h3 style={{ margin: 0, fontSize: 18 }}>
                   {p.nome}
                 </h3>
 
                 <p style={{
                   margin: 0,
-                  fontSize: TAMANHO.preco,
+                  fontSize: 16,
                   color: "#27ae60",
                   fontWeight: "bold"
                 }}>
@@ -150,7 +189,7 @@ export default function PedidoHotdog() {
               </div>
             </div>
 
-            {/* ✅ BOTÕES */}
+            {/* 👉 BOTÕES */}
             <div style={{
               display: "flex",
               alignItems: "center",
@@ -158,12 +197,11 @@ export default function PedidoHotdog() {
             }}>
               <button
                 style={{
-                  width: TAMANHO.botao,
-                  height: TAMANHO.botao,
+                  width: 30,
+                  height: 30,
                   borderRadius: "50%",
                   background: "#ddd",
-                  border: "none",
-                  fontSize: 18
+                  border: "none"
                 }}
                 onClick={() => {
                   const n = [...produtos];
@@ -175,8 +213,8 @@ export default function PedidoHotdog() {
               </button>
 
               <span style={{
-                fontSize: TAMANHO.quantidade,
                 margin: "0 15px",
+                fontSize: 18,
                 fontWeight: "bold"
               }}>
                 {p.qtd}
@@ -184,13 +222,12 @@ export default function PedidoHotdog() {
 
               <button
                 style={{
-                  width: TAMANHO.botao,
-                  height: TAMANHO.botao,
+                  width: 30,
+                  height: 30,
                   borderRadius: "50%",
                   background: "#25D366",
                   color: "white",
-                  border: "none",
-                  fontSize: 18
+                  border: "none"
                 }}
                 onClick={() => {
                   const n = [...produtos];
@@ -202,7 +239,7 @@ export default function PedidoHotdog() {
               </button>
             </div>
 
-            {/* ✅ ADICIONAIS */}
+            {/* 👉 ADICIONAIS */}
             <div style={{ marginTop: 10 }}>
               {p.adicionais.map((a, idx) => (
                 <label key={idx} style={{
@@ -219,14 +256,13 @@ export default function PedidoHotdog() {
               ))}
             </div>
 
-            {/* ✅ OBSERVAÇÃO */}
+            {/* 👉 OBSERVAÇÃO */}
             <input
-              placeholder="Observação"
+              placeholder="Alguma observação?"
               style={{
                 width: "100%",
                 marginTop: 10,
                 padding: 10,
-                fontSize: 14,
                 borderRadius: 8,
                 border: "1px solid #ddd"
               }}
@@ -241,15 +277,15 @@ export default function PedidoHotdog() {
 
         {/* PAGAMENTO */}
         <div style={{ background: "white", padding: 15, borderRadius: 12 }}>
-          <h3>💳 Pagamento</h3>
+          <h3>💳 Forma de pagamento</h3>
 
-          {["Pix", "Cartão", "Espécie"].map(p => (
-            <label key={p} style={{ display: "block" }}>
+          {["Pix", "Cartão", "Espécie"].map((tipo) => (
+            <label key={tipo} style={{ display: "block" }}>
               <input
                 type="radio"
-                value={p}
+                value={tipo}
                 onChange={(e) => setPagamento(e.target.value)}
-              /> {p}
+              /> {tipo}
             </label>
           ))}
         </div>
@@ -258,14 +294,25 @@ export default function PedidoHotdog() {
         <div style={{
           background: "white",
           padding: 15,
-          marginTop: 10,
-          borderRadius: 12
+          borderRadius: 12,
+          marginTop: 10
         }}>
           <h3>🛵 Endereço</h3>
           <input
+            placeholder="Digite seu endereço"
             style={{ width: "100%", padding: 10 }}
             onChange={(e) => setEndereco(e.target.value)}
           />
+        </div>
+
+        {/* TOTAL */}
+        <div style={{
+          background: "white",
+          padding: 15,
+          borderRadius: 12,
+          marginTop: 10
+        }}>
+          <strong>💰 Total: R$ {calcularTotal().toFixed(2)}</strong>
         </div>
 
         {/* BOTÃO FINAL */}
@@ -274,15 +321,15 @@ export default function PedidoHotdog() {
           style={{
             width: "100%",
             padding: 15,
-            marginTop: 10,
             background: "#25D366",
             color: "white",
             border: "none",
             borderRadius: 10,
+            marginTop: 10,
             fontSize: 16
           }}
         >
-          Finalizar Pedido
+          Finalizar Pedido no WhatsApp
         </button>
 
       </div>
