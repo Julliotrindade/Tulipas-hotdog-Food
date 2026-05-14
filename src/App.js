@@ -49,7 +49,7 @@ export default function PedidoHotdog() {
       preco: 10,
       qtd: 0,
       max: 10,
-      img: "https://i.imgur.com/5bXG3kF.png",
+      img: "https://chatgpt.com/backend-api/estuary/content?id=file_0000000043d071f5a41d3307ea93e694&ts=494103&p=fs&cid=1&sig=ab8084de6182cce88c6756727fe479cf1744a0172ad464deb34654c5da549309&v=0",
       adicionais: ["Pepis", "Guaraná", "Coca ZERO"],
       selecionados: [],
       obs: ""
