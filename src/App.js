@@ -19,7 +19,7 @@ export default function PedidoHotdog() {
       preco: 8,
       qtd: 0,
       max: 10,
-      img: "/images/Refris.jpg",
+      img: "https://revistaoeste.com/oestegeral/wp-content/uploads/2026/02/Imagem-3-11.jpg",
       adicionais: ["Maionese", "Ketchup"],
       selecionados: [],
       obs: ""
@@ -29,7 +29,7 @@ export default function PedidoHotdog() {
       preco: 10,
       qtd: 0,
       max: 10,
-      img: "https://revistaoeste.com/oestegeral/wp-content/uploads/2026/02/Imagem-3-11.jpg",
+      img: "https://img.cdndsgni.com/preview/10531382.jpg",
       adicionais: ["Maionese", "Ketchup"],
       selecionados: [],
       obs: ""
@@ -49,7 +49,7 @@ export default function PedidoHotdog() {
       preco: 10,
       qtd: 0,
       max: 10,
-      img: "/images/Refri.jpg",
+      img: "/images/Refris.jpg",
       adicionais: ["Pepis", "Guaraná", "Coca ZERO"],
       selecionados: [],
       obs: ""
