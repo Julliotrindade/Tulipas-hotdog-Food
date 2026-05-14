@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function PedidoHotdog() {
+import App from "./App"; {
   const [produtos, setProdutos] = useState([
     {
       nome: "Hotdog Simples",
