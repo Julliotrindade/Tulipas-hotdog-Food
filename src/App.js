@@ -342,9 +342,14 @@ export default function PedidoHotdog() {
         }}>
           <h3>🛵 Endereço</h3>
           <input
-            placeholder="Digite seu endereço"
-            style={{ width: "100%", padding: 10 }}
-            onChange={(e) => setEndereco(e.target.value)}
+            placeholder="Digite seu endereço"//placeholder="Digite seu endereço"
+            style={{//style={{ width: "100%", padding: 10 }}
+              width: "100%",//onChange={(e) => setEndereco(e.target.value)}
+              padding: 12,
+              marginTop: 10,
+              borderRadius: 8,
+              border: "1px solid #ccc",
+              boxSizing: "border-box" // ✅ ESSENCIAL (corrige o vazamento)            
           />
         </div>
 
