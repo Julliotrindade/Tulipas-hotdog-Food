@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import App from "./App"; {
+export default function App() {
   const [produtos, setProdutos] = useState([
     {
       nome: "Hotdog Simples",
@@ -59,7 +59,7 @@ import App from "./App"; {
 
       {produtos.map((p, i) => (
         <div key={i} style={{ border: "1px solid #ccc", marginBottom: 10, padding: 10 }}>
-          {p.img}={80} />
+          <img src={p.img} width={80} alt="produto" />
 
           <h3>{p.nome}</h3>
           <p>R$ {p.preco}</p>
