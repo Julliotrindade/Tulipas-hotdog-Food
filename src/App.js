@@ -124,7 +124,7 @@ export default function PedidoHotdog() {
 
       {/* 👉 largura do app */}
       <div style={{
-        width: "100%",
+        width: "50%",
         maxWidth: TAMANHO.larguraApp,
         padding: 20
       }}>
