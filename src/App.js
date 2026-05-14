@@ -11,7 +11,33 @@ export default function PedidoHotdog() {
       adicionais: ["Bacon", "Queijo"],
       selecionados: [],
       obs: ""
+    },
+
+    
+   {
+      nome: "Hotdog Duplo",
+      preco: 15,
+      qtd: 0,
+      max: 10,
+      img: "https://i.imgur.com/5bXG3kF.png",
+      adicionais: ["Bacon", "Queijo", "Ovo"],
+      selecionados: [],
+      obs: ""
+    },
+
+    
+    {
+      nome: "Hotdog Duplo",
+      preco: 15,
+      qtd: 0,
+      max: 10,
+      img: "https://i.imgur.com/5bXG3kF.png",
+      adicionais: ["Bacon", "Queijo", "Ovo"],
+      selecionados: [],
+      obs: ""
     }
+
+    
   ]);
 
   const numeroWhatsApp = "5584996564129";
