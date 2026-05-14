@@ -130,7 +130,17 @@ export default function PedidoHotdog() {
       minHeight: "100vh"
     }}>
 
-      <div style={{
+
+     <div style={{
+      width: "100%",
+      maxWidth: 600,       // 👉 tamanho máximo (PC)
+      padding: 15,
+      margin: "0 auto",    // 👉 centraliza
+
+  // ✅ RESPONSIVO AUTOMÁTICO
+  boxSizing: "border-box"
+}}>
+        <div style={{
         width: "100%",
         maxWidth: 600, // 👉 muda largura do sistema aqui
         padding: 20
