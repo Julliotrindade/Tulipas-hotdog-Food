@@ -1,4 +1,3 @@
-# Tulipas-hotdog-Food
 import { useState } from "react";
 
 export default function PedidoHotdog() {
