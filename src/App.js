@@ -10,7 +10,7 @@ export default function PedidoHotdog() {
       preco: 7, // 👉 alterar aqui muda o valor
       qtd: 0,
       max: 10,
-      img: "https://i.imgur.com/5bXG3kF.png",
+      img: "https://revistaoeste.com/oestegeral/wp-content/uploads/2026/02/Imagem-3-11.jpg",
       adicionais: ["Maionese", "Ketchup"],
       selecionados: [],
       obs: ""
