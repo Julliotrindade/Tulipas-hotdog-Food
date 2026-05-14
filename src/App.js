@@ -54,6 +54,9 @@ export default function PedidoHotdog() {
     }
   ]);
 
+  const [endereco, setEndereco] = useState("");
+  const [pagamento, setPagamento] = useState("");
+
   const numeroWhatsApp = "5584996564129";
 
   const calcularTotal = () =>
@@ -80,7 +83,7 @@ export default function PedidoHotdog() {
     let temItem = false;
 
     produtos.forEach(p => {
-      if (p.qtd > 0 && p.preco) {
+      if (p.qtd > 0) {
         temItem = true;
 
         const subtotal = p.preco * p.qtd;
@@ -113,8 +116,8 @@ export default function PedidoHotdog() {
 
     msg += `\n💰 Total: R$ ${calcularTotal().toFixed(2)}\n\n`;
 
-    msg += `💳 Pagamento: \n`;
-    msg += `🛵 Endereço: \n\n`;
+    msg += `💳 Pagamento: ${pagamento || "Não informado"}\n`;
+    msg += `🛵 Endereço: ${endereco || "Não informado"}\n\n`;
 
     msg += `Confirma o pedido? ✅`;
 
@@ -133,7 +136,7 @@ export default function PedidoHotdog() {
           padding: 15,
           marginBottom: 15
         }}>
-          <div style={{ display: "flex", gap: 15, alignItems: "center" }}>
+          <div style={{ display: "flex", gap: 15 }}>
             <img src={p.img} width={80} />
             <div>
               <h3>{p.nome}</h3>
@@ -180,8 +183,39 @@ export default function PedidoHotdog() {
         </div>
       ))}
 
+      {/* PAGAMENTO */}
       <div style={{ background: "white", padding: 15, marginBottom: 10 }}>
-        <strong>Total: R$ {calcularTotal().toFixed(2)}</strong>
+        <h3>💳 Forma de pagamento</h3>
+
+        <label>
+          <input type="radio" name="pagamento" value="Pix"
+            onChange={(e) => setPagamento(e.target.value)} /> Pix
+        </label>
+
+        <label style={{ marginLeft: 10 }}>
+          <input type="radio" name="pagamento" value="Cartão"
+            onChange={(e) => setPagamento(e.target.value)} /> Cartão
+        </label>
+
+        <label style={{ marginLeft: 10 }}>
+          <input type="radio" name="pagamento" value="Espécie"
+            onChange={(e) => setPagamento(e.target.value)} /> Espécie
+        </label>
+      </div>
+
+      {/* ENDEREÇO */}
+      <div style={{ background: "white", padding: 15, marginBottom: 10 }}>
+        <h3>🛵 Endereço</h3>
+
+        <input
+          placeholder="Digite seu endereço completo"
+          style={{ width: "100%", padding: 8 }}
+          onChange={(e) => setEndereco(e.target.value)}
+        />
+      </div>
+
+      <div style={{ background: "white", padding: 15 }}>
+        <strong>💰 Total: R$ {calcularTotal().toFixed(2)}</strong>
       </div>
 
       <button
@@ -192,7 +226,8 @@ export default function PedidoHotdog() {
           background: "#25D366",
           color: "white",
           border: "none",
-          borderRadius: 10
+          borderRadius: 10,
+          marginTop: 10
         }}
       >
         Enviar pelo WhatsApp
