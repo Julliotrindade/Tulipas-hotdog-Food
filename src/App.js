@@ -136,7 +136,7 @@ export default function PedidoHotdog() {
         padding: 20
       }}>
 
-        <h1 style={{ textAlign: "center" }}>🍔 Tulipa's Hotdog</h1>
+        <h1 style={{ textAlign: "center" }}>🌭 Tulipa's Hotdog🌭</h1>
 
         {produtos.map((p, i) => (
           <div
