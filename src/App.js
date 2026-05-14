@@ -19,7 +19,7 @@ export default function PedidoHotdog() {
       preco: 8,
       qtd: 0,
       max: 10,
-      img: "/images/Refri.png",
+      img: "/images/Refris.png",
       adicionais: ["Maionese", "Ketchup"],
       selecionados: [],
       obs: ""
