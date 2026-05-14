@@ -1,4 +1,4 @@
-  import { useState } from "react";
+import { useState } from "react";
 
 export default function PedidoHotdog() {
   const [produtos, setProdutos] = useState([
@@ -14,7 +14,7 @@ export default function PedidoHotdog() {
     }
   ]);
 
-  const numeroWhatsApp = "558499654129";
+  const numeroWhatsApp = "5584996564129";
 
   const calcularTotal = () =>
     produtos.reduce((t, p) => t + p.preco * p.qtd, 0);
