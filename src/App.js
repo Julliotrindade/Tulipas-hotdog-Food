@@ -59,7 +59,7 @@ export default function PedidoHotdog() {
   const [endereco, setEndereco] = useState("");
   const [pagamento, setPagamento] = useState("");
 
-  const numeroWhatsApp = "5584986333362";
+  const numeroWhatsApp = "558496564129";
 
   const calcularTotal = () =>
     produtos.reduce((t, p) => t + p.preco * p.qtd, 0);
