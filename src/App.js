@@ -5,7 +5,7 @@ export default function PedidoHotdog() {
   // ✅ 🎛️ CONTROLE DE TAMANHOS (MUDE AQUI FACILMENTE)
 
   const TAMANHO = {
-    larguraApp: 700, // 👉 largura total do layout
+    larguraApp: 500, // 👉 largura total do layout
     imagem: 120, // 👉 tamanho da imagem
     titulo: 24, // 👉 nome do produto
     preco: 18, // 👉 preço
