@@ -49,7 +49,7 @@ export default function PedidoHotdog() {
       preco: 10,
       qtd: 0,
       max: 10,
-      img: "https://www.instagram.com/p/DR5ugveDPVd/",
+      img: "/images/Refri.jpg",
       adicionais: ["Pepis", "Guaraná", "Coca ZERO"],
       selecionados: [],
       obs: ""
