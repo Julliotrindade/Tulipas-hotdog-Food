@@ -20,7 +20,7 @@ export default function PedidoHotdog() {
       qtd: 0,
       max: 10,
       img: "https://osertanejorh.wordpress.com/wp-content/uploads/2014/09/mangaio-23-carne-com-nata.jpg",
-      adicionais: ["Maionese", "Ketchup"],
+      adicionais: [],
       selecionados: [],
       obs: ""
     },    
@@ -30,7 +30,7 @@ export default function PedidoHotdog() {
       qtd: 0,
       max: 10,
       img: "https://i0.wp.com/espetinhodesucesso.com/wp-content/uploads/2024/08/Como-fritar-bacon-em-cubos-na-Airfryer.jpg?resize=800%2C450&ssl=1",
-      adicionais: ["Maionese", "Ketchup"],
+      adicionais: [],
       selecionados: [],
       obs: ""
     },    
@@ -40,7 +40,7 @@ export default function PedidoHotdog() {
       qtd: 0,
       max: 10,
       img: "https://www.extrabom.com.br/media/produtos/350x350/45042_20170420104415_thumb_45042_linguica_calabresa_cozida_fina_cofril.jpg_.webp",
-      adicionais: ["Maionese", "Ketchup"],
+      adicionais: [],
       selecionados: [],
       obs: ""
     },    
