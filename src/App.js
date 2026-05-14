@@ -8,34 +8,30 @@ export default function PedidoHotdog() {
       qtd: 0,
       max: 10,
       img: "https://i.imgur.com/5bXG3kF.png",
-      adicionais: ["Maionese", "Quetshup"],
+      adicionais: ["Maionese", "Ketchup"],
       selecionados: [],
       obs: ""
     },
-    
     {
       nome: "Hotdog Carne de sol na nata",
       preco: 8,
       qtd: 0,
       max: 10,
       img: "https://i.imgur.com/5bXG3kF.png",
-      adicionais: ["Maionese", "Quetshup"],
+      adicionais: ["Maionese", "Ketchup"],
       selecionados: [],
       obs: ""
     },
-    
-   {
+    {
       nome: "Hotdog Franbacon",
       preco: 10,
       qtd: 0,
       max: 10,
       img: "https://i.imgur.com/5bXG3kF.png",
-      adicionais: ["Maionese", "Quetshup"],
+      adicionais: ["Maionese", "Ketchup"],
       selecionados: [],
       obs: ""
     },
-
-    
     {
       nome: "Hotdog Americano",
       preco: 10,
@@ -46,8 +42,7 @@ export default function PedidoHotdog() {
       selecionados: [],
       obs: ""
     },
-    
-   {
+    {
       nome: "Refri de 1 Litro",
       preco: 10,
       qtd: 0,
@@ -56,26 +51,7 @@ export default function PedidoHotdog() {
       adicionais: ["Pepsi", "Guaraná", "Coca Zero"],
       selecionados: [],
       obs: ""
-    },
-   {
-      nome: "Qual forma de pagamento?",
-      preco: 10,
-      qtd: 0,
-      max: 10,
-      img: "https://i.imgur.com/5bXG3kF.png",
-      adicionais: ["Pix", "Cartão", "Espécie"],
-      selecionados: ["Endereço"],
-      obs: ""
-    },
-        
-    {
-      nome: "Qual forma de pagamento?",
-      adicionais: ["Pix", "Cartão", "Espécie"],
-      selecionados: [],
-      obs: "Endereço"
-    },
-    
-    
+    }
   ]);
 
   const numeroWhatsApp = "5584996564129";
@@ -97,44 +73,75 @@ export default function PedidoHotdog() {
   };
 
   const enviar = () => {
-    let msg = "🍔 Pedido Tulipa's Hotdog\n\n";
+    let msg = `📝 Resumo do Pedido - Tulipa's Hotdog\n\n`;
+
+    msg += `🛒 Itens:\n`;
+
+    let temItem = false;
 
     produtos.forEach(p => {
-      if (p.qtd > 0) {
-        msg += `${p.nome} x${p.qtd}\n`;
-        if (p.selecionados.length)
-          msg += `+ ${p.selecionados.join(", ")}\n`;
-        if (p.obs) msg += `Obs: ${p.obs}\n`;
+      if (p.qtd > 0 && p.preco) {
+        temItem = true;
+
+        const subtotal = p.preco * p.qtd;
+
+        msg += `${p.qtd}x ${p.nome} - R$ ${subtotal.toFixed(2)}\n`;
+
+        if (p.selecionados.length || p.obs) {
+          let linhaExtra = "   ➕ ";
+
+          if (p.selecionados.length) {
+            linhaExtra += p.selecionados.join(", ");
+          }
+
+          if (p.obs) {
+            if (p.selecionados.length) {
+              linhaExtra += " | ";
+            }
+            linhaExtra += p.obs;
+          }
+
+          msg += linhaExtra + "\n";
+        }
       }
     });
 
-    msg += `\nTotal: R$ ${calcularTotal().toFixed(2)}`;
+    if (!temItem) {
+      alert("Adicione pelo menos 1 item!");
+      return;
+    }
+
+    msg += `\n💰 Total: R$ ${calcularTotal().toFixed(2)}\n\n`;
+
+    msg += `💳 Pagamento: \n`;
+    msg += `🛵 Endereço: \n\n`;
+
+    msg += `Confirma o pedido? ✅`;
 
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(msg)}`;
-    window.open(url);
+    window.open(url, "_blank");
   };
 
   return (
-    <div style={{ background: "#f4f4f4", minHeight: "100vh", padding: 20, fontFamily: "Arial" }}>
-      <h1 style={{ textAlign: "center" }}>🍔 Tulipa´s Hotdog</h1>
+    <div style={{ background: "#f4f4f4", minHeight: "100vh", padding: 20 }}>
+      <h1 style={{ textAlign: "center" }}>🍔 Tulipa's Hotdog</h1>
 
       {produtos.map((p, i) => (
         <div key={i} style={{
           background: "white",
           borderRadius: 12,
           padding: 15,
-          marginBottom: 15,
-          boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
+          marginBottom: 15
         }}>
           <div style={{ display: "flex", gap: 15, alignItems: "center" }}>
-            <img src={p.img} width={80} style={{ borderRadius: 10 }} />
+            <img src={p.img} width={80} />
             <div>
-              <h3 style={{ margin: 0 }}>{p.nome}</h3>
-              <p style={{ margin: 0, color: "#555" }}>R$ {p.preco}</p>
+              <h3>{p.nome}</h3>
+              <p>R$ {p.preco}</p>
             </div>
           </div>
 
-          <div style={{ marginTop: 10 }}>
+          <div>
             <button onClick={() => {
               const n = [...produtos];
               if (n[i].qtd > 0) n[i].qtd--;
@@ -150,7 +157,7 @@ export default function PedidoHotdog() {
             }}>+</button>
           </div>
 
-          <div style={{ marginTop: 10 }}>
+          <div>
             {p.adicionais.map((a, idx) => (
               <label key={idx} style={{ marginRight: 10 }}>
                 <input
@@ -163,7 +170,7 @@ export default function PedidoHotdog() {
 
           <input
             placeholder="Observação"
-            style={{ width: "100%", marginTop: 10, padding: 8 }}
+            style={{ width: "100%", marginTop: 10 }}
             onChange={(e) => {
               const n = [...produtos];
               n[i].obs = e.target.value;
@@ -173,13 +180,7 @@ export default function PedidoHotdog() {
         </div>
       ))}
 
-      <div style={{
-        background: "white",
-        padding: 15,
-        borderRadius: 12,
-        textAlign: "center",
-        marginBottom: 10
-      }}>
+      <div style={{ background: "white", padding: 15, marginBottom: 10 }}>
         <strong>Total: R$ {calcularTotal().toFixed(2)}</strong>
       </div>
 
@@ -191,8 +192,7 @@ export default function PedidoHotdog() {
           background: "#25D366",
           color: "white",
           border: "none",
-          borderRadius: 10,
-          fontSize: 16
+          borderRadius: 10
         }}
       >
         Enviar pelo WhatsApp
