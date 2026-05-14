@@ -57,7 +57,17 @@ export default function PedidoHotdog() {
       selecionados: [],
       obs: ""
     },
-    
+   {
+      nome: "Qual forma de pagamento?",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "https://i.imgur.com/5bXG3kF.png",
+      adicionais: ["Pix", "Cartão", "Espécie"],
+      selecionados: ["Endereço"],
+      obs: ""
+    },
+        
     {
       nome: "Qual forma de pagamento?",
       adicionais: ["Pix", "Cartão", "Espécie"],
