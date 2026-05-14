@@ -98,7 +98,7 @@ export default function PedidoHotdog() {
 
   return (
     <div style={{ background: "#f4f4f4", minHeight: "100vh", padding: 20, fontFamily: "Arial" }}>
-      <h1 style={{ textAlign: "center" }}>🍔 Hotdog</h1>
+      <h1 style={{ textAlign: "center" }}>🍔 Tulipa´s Hotdog</h1>
 
       {produtos.map((p, i) => (
         <div key={i} style={{
