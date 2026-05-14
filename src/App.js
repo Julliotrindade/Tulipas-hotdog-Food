@@ -19,8 +19,38 @@ export default function PedidoHotdog() {
       preco: 8,
       qtd: 0,
       max: 10,
-      img: "https://i.imgur.com/5bXG3kF.png",
+      img: "https://revistaoeste.com/oestegeral/wp-content/uploads/2026/02/Imagem-3-11.jpg",
       adicionais: ["Maionese", "Ketchup"],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Hotdog Franbacon",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "https://revistaoeste.com/oestegeral/wp-content/uploads/2026/02/Imagem-3-11.jpg",
+      adicionais: ["Maionese", "Ketchup"],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Hotdog Americano",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "https://revistaoeste.com/oestegeral/wp-content/uploads/2026/02/Imagem-3-11.jpg",
+      adicionais: ["Maionese", "Ketchup"],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Refrigerante 1L",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "https://i.imgur.com/5bXG3kF.png",
+      adicionais: ["Pepis", "Guaraná", "Coca ZERO"],
       selecionados: [],
       obs: ""
     }
