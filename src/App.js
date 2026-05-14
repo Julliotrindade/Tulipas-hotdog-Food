@@ -113,7 +113,7 @@ export default function PedidoHotdog() {
       }
     });
 
-    msg += `💰 Total: R$ ${calcularTotal().toFixed(2)}\n\n`;
+    msg += `💰💳🛒💵 Total: R$ ${calcularTotal().toFixed(2)}\n\n`;
     msg += `💳 Pagamento: ${pagamento}\n`;
     msg += `🛵 Endereço: ${endereco}\n\n`;
     msg += "Confirma o pedido? ✅";
