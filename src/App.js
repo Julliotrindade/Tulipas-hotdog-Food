@@ -59,7 +59,7 @@ export default function App() {
 
       {produtos.map((p, i) => (
         <div key={i} style={{ border: "1px solid #ccc", marginBottom: 10, padding: 10 }}>
-          <img src={p.img} width={80} alt="produto" />
+          <img src={p.img} width={80} />
 
           <h3>{p.nome}</h3>
           <p>R$ {p.preco}</p>
@@ -109,3 +109,4 @@ export default function App() {
     </div>
   );
 }
+``
