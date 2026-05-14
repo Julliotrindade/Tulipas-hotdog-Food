@@ -84,7 +84,7 @@ export default function PedidoHotdog() {
       return;
     }
 
-    let msg = "📝 Resumo do Pedido - Tulipa's Hotdog\n\n";
+    let msg = "📋 Resumo do Pedido - Tulipa's Hotdog\n\n";
     msg += "🛒 Itens:\n\n";
 
     produtos.forEach(p => {
