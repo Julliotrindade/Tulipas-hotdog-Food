@@ -6,7 +6,7 @@ export default function PedidoHotdog() {
   const [produtos, setProdutos] = useState([
     {
       nome: "Hotdog Tradicional",
-      preco: 18,
+      preco: 7,
       qtd: 0,
       max: 10,
       img: "https://img.cdndsgni.com/preview/10531382.jpg",
@@ -131,8 +131,8 @@ export default function PedidoHotdog() {
     }}>
 
       <div style={{
-        width: "100%",
-        maxWidth: 500, // 👉 muda largura do sistema aqui
+        width: "50%",
+        maxWidth: 700, // 👉 muda largura do sistema aqui
         padding: 20
       }}>
 
