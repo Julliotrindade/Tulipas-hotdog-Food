@@ -143,7 +143,7 @@ export default function PedidoHotdog() {
 
       <div style={{
         width: "100%",
-        maxWidth: 900, // 👉 tamanho do card (mude aqui)
+        maxWidth: 800, // 👉 tamanho do card (mude aqui)
         padding: 20
       }}>
 
