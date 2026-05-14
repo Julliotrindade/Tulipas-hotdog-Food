@@ -14,7 +14,7 @@ export default function App() {
     }
   ]);
 
-  const numeroWhatsApp = "5584999999999";
+  const numeroWhatsApp = "558499654129";
 
   const calcularTotal = () =>
     produtos.reduce((t, p) => t + p.preco * p.qtd, 0);
