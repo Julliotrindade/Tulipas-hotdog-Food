@@ -316,11 +316,8 @@ export default function PedidoHotdog() {
 
           // ✅ ANIMAÇÃO
           transition: "all 0.2s ease",
+          transform: pagamento === tipo ? "scale(1.05)" : "scale(1)"
         }}
-  >
-    {tipo}
-</div>
-))}
 
         // ✅ EFEITO AO CLICAR
         onMouseDown={(e) => e.currentTarget.style.transform = "scale(0.95)"}
