@@ -1,139 +1,387 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function PedidoHotdog() {
 
-  const [produtos, setProdutos] = useState([]);
-  const [abrirCarrinho, setAbrirCarrinho] = useState(false);
+  // 👉 EDITAR PRODUTOS AQUI altera tudo no sistema
+  const [produtos, setProdutos] = useState([
+    {
+      nome: "Hotdog Tradicional",
+      preco: 7,
+      qtd: 0,
+      max: 10,
+      img: "https://img.cdndsgni.com/preview/10531382.jpg",
+      adicionais: [], // ["Maionese", "Ketchup"],cada item dentro é um quadrado de marcação
+      selecionados: [],
+      obs: ""
+    },
+    {
+      nome: "Hotdog Carne de sol na nata",
+      preco: 8,
+      qtd: 0,
+      max: 10,
+      img: "https://osertanejorh.wordpress.com/wp-content/uploads/2014/09/mangaio-23-carne-com-nata.jpg",
+      adicionais: [],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Hotdog Franbacon",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "https://i0.wp.com/espetinhodesucesso.com/wp-content/uploads/2024/08/Como-fritar-bacon-em-cubos-na-Airfryer.jpg?resize=800%2C450&ssl=1",
+      adicionais: [],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Hotdog Americano",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "https://www.extrabom.com.br/media/produtos/350x350/45042_20170420104415_thumb_45042_linguica_calabresa_cozida_fina_cofril.jpg_.webp",
+      adicionais: [],
+      selecionados: [],
+      obs: ""
+    },    
+    {
+      nome: "Refrigerante 1L",
+      preco: 10,
+      qtd: 0,
+      max: 10,
+      img: "/images/Refris.jpg",
+      adicionais: ["Pepis", "Guaraná", "Coca ZERO"],
+      selecionados: [],
+      obs: ""
+    }
+  ]);
+
   const [endereco, setEndereco] = useState("");
   const [pagamento, setPagamento] = useState("");
 
   const numeroWhatsApp = "558496564129";
 
-  useEffect(() => {
-    const dados = localStorage.getItem("produtos");
-    if (dados) {
-      setProdutos(JSON.parse(dados));
-    }
-  }, []);
-
   const calcularTotal = () =>
     produtos.reduce((t, p) => t + p.preco * p.qtd, 0);
 
+  const toggleAdicional = (i, item) => {
+    const novo = [...produtos];
+    const lista = novo[i].selecionados;
+
+    if (lista.includes(item)) {
+      novo[i].selecionados = lista.filter(a => a !== item);
+    } else {
+      novo[i].selecionados.push(item);
+    }
+
+    setProdutos(novo);
+  };
+
   const enviar = () => {
+
     if (!endereco || !pagamento) {
-      alert("Preencha endereço e pagamento");
+      alert("Preencha endereço e forma de pagamento!");
       return;
     }
 
-    let msg = "📝 Pedido:%0A";
+    let msg = "\uD83D\uDCDD Resumo do Pedido - Tulipa's Hotdog\n\n";
+    msg += "🛒 Itens:\n\n";
 
     produtos.forEach(p => {
       if (p.qtd > 0) {
-        msg += `- ${p.qtd}x ${p.nome} R$${(p.qtd * p.preco)}%0A`;
+
+        const subtotal = p.preco * p.qtd;
+
+        msg += `${p.qtd}x ${p.nome} - R$ ${subtotal.toFixed(2)}\n`;
+
+        if (p.selecionados.length || p.obs) {
+          let linhaExtra = "   ➕ ";
+
+          if (p.selecionados.length) {
+            linhaExtra += p.selecionados.join(", ");
+          }
+
+          if (p.obs) {
+            if (p.selecionados.length) linhaExtra += " | ";
+            linhaExtra += p.obs;
+          }
+
+          msg += linhaExtra + "\n";
+        }
+
+        msg += "\n";
       }
     });
 
-    msg += `%0ATotal: R$${calcularTotal()}%0A`;
-    msg += `Pagamento: ${pagamento}%0A`;
-    msg += `Endereço: ${endereco}`;
+    msg += `💰💳🛒💵 Total: R$ ${calcularTotal().toFixed(2)}\n\n`;
+    msg += `💳 Pagamento: ${pagamento}\n`;
+    msg += `\uD83D\uDEF5 Endereço: ${endereco}\n\n`;
+    msg += "Confirma o pedido? ✅";
 
-    window.open(`https://wa.me/${numeroWhatsApp}?text=${msg}`);
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{
+      display: "flex",
+      justifyContent: "center", // 👉 centraliza tudo
+      background: "#f4f4f4",
+      minHeight: "100vh"
+    }}>
 
-      <h1>🌭 Meu Delivery</h1>
-
-      {produtos.map((p, i) => (
-        <div key={i} style={{ background: "#fff", margin: 10, padding: 10 }}>
-
-          <h3>{p.nome}</h3>
-          <p>R$ {p.preco}</p>
-
-          <button onClick={() => {
-            const n = [...produtos];
-            if (n[i].qtd > 0) n[i].qtd--;
-            setProdutos(n);
-          }}>-</button>
-
-          {p.qtd}
-
-          <button onClick={() => {
-            const n = [...produtos];
-            if (n[i].qtd < 10) n[i].qtd++;
-            setProdutos(n);
-          }}>+</button>
-
-        </div>
-      ))}
-
-      {/* BOTÃO FLUTUANTE */}
-      <div
-        onClick={() => setAbrirCarrinho(true)}
-        style={{
-          position: "fixed",
-          bottom: 20,
-          right: 20,
-          background: "#25D366",
-          width: 60,
-          height: 60,
-          borderRadius: "50%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "white"
-        }}
-      >
-        🛒
-        <span>
-          {produtos.reduce((t, p) => t + p.qtd, 0)}
-        </span>
-      </div>
-
-      {/* CARRINHO */}
       <div style={{
-        position: "fixed",
-        top: 0,
-        right: abrirCarrinho ? 0 : "-100%",
-        width: 300,
-        height: "100%",
-        background: "white",
-        padding: 20,
-        transition: "0.3s"
+        width: "100%",
+        maxWidth: 600, // 👉 muda largura do sistema aqui
+        padding: 20
       }}>
-        <button onClick={() => setAbrirCarrinho(false)}>Fechar</button>
 
-        {produtos.filter(p => p.qtd > 0).map((p, i) => (
-          <div key={i}>
-            {p.qtd}x {p.nome}
-            <button onClick={() => {
-              const n = [...produtos];
-              n[i].qtd = 0;
-              setProdutos(n);
-            }}>Remover</button>
+        <h1 style={{ textAlign: "center" }}>🌭 Tulipa's Hotdog🌭</h1>
+
+        {produtos.map((p, i) => (
+          <div
+            key={i}
+            style={{
+              background: "white",
+              borderRadius: 16,
+              padding: 15,
+              marginBottom: 15,
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)", // 👉 sombra
+              transition: "0.3s"
+            }}
+            onMouseEnter={(e) =>
+              e.currentTarget.style.transform = "scale(1.03)"
+            }
+            onMouseLeave={(e) =>
+              e.currentTarget.style.transform = "scale(1)"
+            }
+          >
+
+            {/* 👉 imagem + texto */}
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 15
+            }}>
+              <img
+                src={p.img}
+                style={{
+                  width: 80, // 👉 MUDA TAMANHO DA IMAGEM AQUI
+                  height: 80,
+                  borderRadius: 10,
+                  objectFit: "cover"
+                }}
+              />
+
+              <div>
+                <h3 style={{ margin: 0, fontSize: 18 }}>
+                  {p.nome}
+                </h3>
+
+                <p style={{
+                  margin: 0,
+                  fontSize: 16,
+                  color: "#27ae60",
+                  fontWeight: "bold"
+                }}>
+                  R$ {p.preco}
+                </p>
+              </div>
+            </div>
+
+            {/* 👉 BOTÕES */}
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              marginTop: 10
+            }}>
+              <button
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: "50%",
+                  background: "#ddd",
+                  border: "none"
+                }}
+                onClick={() => {
+                  const n = [...produtos];
+                  if (n[i].qtd > 0) n[i].qtd--;
+                  setProdutos(n);
+                }}
+              >
+                -
+              </button>
+
+              <span style={{
+                margin: "0 15px",
+                fontSize: 18,
+                fontWeight: "bold"
+              }}>
+                {p.qtd}
+              </span>
+
+              <button
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: "50%",
+                  background: "#25D366",
+                  color: "white",
+                  border: "none"
+                }}
+                onClick={() => {
+                  const n = [...produtos];
+                  if (n[i].qtd < p.max) n[i].qtd++;
+                  setProdutos(n);
+                }}
+              >
+                +
+              </button>
+            </div>
+
+            {/* 👉 ADICIONAIS */}
+            <div style={{ marginTop: 10 }}>
+              {p.adicionais.map((a, idx) => (
+                <label key={idx} style={{
+                  background: "#eee",
+                  padding: "5px 10px",
+                  borderRadius: 8,
+                  marginRight: 8
+                }}>
+                  <input
+                    type="checkbox"
+                    onChange={() => toggleAdicional(i, a)}
+                  /> {a}
+                </label>
+              ))}
+            </div>
+
+            {/* 👉 OBSERVAÇÃO */}
+            <input
+              placeholder="Alguma observação?"
+              style={{
+                width: "100%",
+                marginTop: 10,
+                padding: 10,
+                borderRadius: 8,
+                border: "1px solid #ddd"
+              }}
+              onChange={(e) => {
+                const n = [...produtos];
+                n[i].obs = e.target.value;
+                setProdutos(n);
+              }}
+            />
           </div>
         ))}
 
-        <h3>Total: R$ {calcularTotal()}</h3>
 
-        <input
-          placeholder="Endereço"
-          onChange={(e) => setEndereco(e.target.value)}
-        />
+{/* PAGAMENTO */}
+<div style={{
+  background: "white",
+  padding: 15,
+  borderRadius: 12,
+  marginTop: 10
+}}>
 
-        <select onChange={(e) => setPagamento(e.target.value)}>
-          <option>Pagamento</option>
-          <option>Pix</option>
-          <option>Cartão</option>
-          <option>Dinheiro</option>
-        </select>
+  <h3 style={{
+    display: "flex",
+    alignItems: "center",
+    gap: 10
+  }}>
+    💳 Forma de pagamento
+  </h3>
 
-        <button onClick={enviar}>
-          Enviar Pedido
-        </button>
+  <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
+
+    {["Pix", "Cartão", "Espécie"].map((tipo) => (
+      <div
+        key={tipo}
+        onClick={() => setPagamento(tipo)} // ✅ clicar na caixa inteira
+        style={{
+          flex: 1,
+          padding: 12,
+          borderRadius: 10,
+          textAlign: "center",
+          cursor: "pointer",
+
+          // ✅ COR DINÂMICA (quando selecionado)
+          background: pagamento === tipo ? "#25D366" : "#eee",
+          color: pagamento === tipo ? "white" : "black",
+
+          // ✅ BORDA
+          border: pagamento === tipo
+            ? "2px solid #25D366"
+            : "2px solid transparent",
+
+          // ✅ ANIMAÇÃO
+          transition: "all 0.2s ease",
+          transform: pagamento === tipo ? "scale(1.05)" : "scale(1)"
+        }}
+
+        // ✅ EFEITO AO CLICAR
+        onMouseDown={(e) => e.currentTarget.style.transform = "scale(0.95)"}
+        onMouseUp={(e) =>
+          e.currentTarget.style.transform =
+            pagamento === tipo ? "scale(1.05)" : "scale(1)"
+        }
+      >
+        {tipo}
       </div>
+    ))}
 
+  </div>
+</div>
+
+        {/* ENDEREÇO */}
+        <div style={{
+          background: "white",
+          padding: 15,
+          borderRadius: 12,
+          marginTop: 10
+        }}>
+          <h3>🛵 Endereço</h3>
+          <input
+            placeholder="Digite seu endereço"//placeholder="Digite seu endereço"
+            style={{//style={{ width: "100%", padding: 10 }}
+              width: "100%",//onChange={(e) => setEndereco(e.target.value)}
+              padding: 12,
+              marginTop: 10,
+              borderRadius: 8,
+              border: "1px solid #ccc",
+              boxSizing: "border-box" // ✅ ESSENCIAL (corrige o vazamento) 
+            }}
+          />
+        </div>
+
+        {/* TOTAL */}
+        <div style={{
+          background: "white",
+          padding: 15,
+          borderRadius: 12,
+          marginTop: 10
+        }}>
+          <strong>💰 Total: R$ {calcularTotal().toFixed(2)}</strong>
+        </div>
+
+        {/* BOTÃO FINAL */}
+        <button
+          onClick={enviar}
+          style={{
+            width: "100%",
+            padding: 15,
+            background: "#25D366",
+            color: "white",
+            border: "none",
+            borderRadius: 10,
+            marginTop: 10,
+            fontSize: 16
+          }}
+        >
+          Finalizar Pedido no WhatsApp
+        </button>
+
+      </div>
     </div>
   );
 }
