@@ -295,29 +295,29 @@ export default function PedidoHotdog() {
   <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
 
     {["Pix", "Cartão", "Espécie"].map((tipo) => (
-      <div
-        key={tipo}
-        onClick={() => setPagamento(tipo)} // ✅ clicar na caixa inteira
-        style={{
-          flex: 1,
-          padding: 12,
-          borderRadius: 10,
-          textAlign: "center",
-          cursor: "pointer",
-
-          // ✅ COR DINÂMICA (quando selecionado)
-          background: pagamento === tipo ? "#25D366" : "#eee",
-          color: pagamento === tipo ? "white" : "black",
-
-          // ✅ BORDA
-          border: pagamento === tipo
-            ? "2px solid #25D366"
-            : "2px solid transparent",
-
-          // ✅ ANIMAÇÃO
-          transition: "all 0.2s ease",
-          transform: pagamento === tipo ? "scale(1.05)" : "scale(1)"
-        }}
+  <div
+    key={tipo}
+    onClick={() => {
+      console.log("Selecionado:", tipo); // debug
+      setPagamento(tipo);
+    }}
+    style={{
+      flex: 1,
+      padding: 12,
+      borderRadius: 10,
+      textAlign: "center",
+      cursor: "pointer",
+      background: pagamento === tipo ? "#25D366" : "#eee",
+      color: pagamento === tipo ? "white" : "black",
+      border: pagamento === tipo
+        ? "2px solid #25D366"
+        : "2px solid transparent",
+      transition: "all 0.2s ease"
+    }}
+  >
+    {tipo}
+  </div>
+))}
 
         // ✅ EFEITO AO CLICAR
         onMouseDown={(e) => e.currentTarget.style.transform = "scale(0.95)"}
