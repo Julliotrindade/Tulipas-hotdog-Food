@@ -294,7 +294,8 @@ export default function PedidoHotdog() {
 
   <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
 
-    {["Pix", "Cartão", "Espécie"].map((tipo) => (
+
+{["Pix", "Cartão", "Espécie"].map((tipo) => (
   <div
     key={tipo}
     onClick={() => {
@@ -318,6 +319,7 @@ export default function PedidoHotdog() {
     {tipo}
   </div>
 ))}
+
 
         // ✅ EFEITO AO CLICAR
         onMouseDown={(e) => e.currentTarget.style.transform = "scale(0.95)"}
